@@ -1,0 +1,1489 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#000000">
+
+  <title>Luiz Henrique Uniformes</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --preto: #080808;
+      --preto2: #121212;
+      --cinza: #777;
+      --cinza-claro: #eeeeee;
+      --branco: #ffffff;
+      --borda: #dddddd;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: #f6f6f6;
+      color: #111;
+      padding-bottom: 85px;
+    }
+
+    button,
+    input,
+    select {
+      font: inherit;
+    }
+
+    button {
+      cursor: pointer;
+    }
+
+    /* CABEÇALHO */
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: var(--preto);
+      color: white;
+      padding: 15px 16px;
+      box-shadow: 0 2px 12px rgba(0,0,0,.2);
+    }
+
+    .topo {
+      max-width: 1200px;
+      margin: auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .marca h1 {
+      font-size: 19px;
+      letter-spacing: .4px;
+    }
+
+    .marca span {
+      display: block;
+      margin-top: 2px;
+      font-size: 11px;
+      color: #aaa;
+    }
+
+    .acoes-topo {
+      display: flex;
+      gap: 8px;
+    }
+
+    .icone {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      border: 1px solid #333;
+      background: #171717;
+      color: white;
+      font-size: 18px;
+      position: relative;
+    }
+
+    .contador {
+      position: absolute;
+      top: -4px;
+      right: -3px;
+      min-width: 18px;
+      height: 18px;
+      padding: 0 4px;
+      background: white;
+      color: black;
+      border-radius: 20px;
+      font-size: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+    }
+
+    /* HERO */
+
+    .hero {
+      background: linear-gradient(135deg, #050505, #252525);
+      color: white;
+      padding: 48px 20px;
+    }
+
+    .hero-conteudo {
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .hero small {
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: #aaa;
+    }
+
+    .hero h2 {
+      font-size: 36px;
+      line-height: 1.05;
+      max-width: 600px;
+      margin: 12px 0;
+    }
+
+    .hero p {
+      color: #ccc;
+      max-width: 550px;
+      line-height: 1.5;
+      margin-bottom: 22px;
+    }
+
+    .btn-branco {
+      background: white;
+      color: black;
+      border: 0;
+      padding: 14px 20px;
+      border-radius: 8px;
+      font-weight: bold;
+    }
+
+    /* CONTEÚDO */
+
+    main {
+      max-width: 1200px;
+      margin: auto;
+      padding: 22px 15px;
+    }
+
+    .busca {
+      background: white;
+      border-radius: 12px;
+      padding: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      border: 1px solid var(--borda);
+    }
+
+    .busca input {
+      width: 100%;
+      border: none;
+      outline: none;
+      font-size: 16px;
+    }
+
+    .categorias {
+      display: flex;
+      overflow-x: auto;
+      gap: 8px;
+      padding: 16px 0;
+      scrollbar-width: none;
+    }
+
+    .categorias::-webkit-scrollbar {
+      display: none;
+    }
+
+    .categoria {
+      flex: 0 0 auto;
+      border: 1px solid #ccc;
+      background: white;
+      padding: 9px 14px;
+      border-radius: 30px;
+      font-size: 13px;
+    }
+
+    .categoria.ativa {
+      background: black;
+      color: white;
+      border-color: black;
+    }
+
+    .titulo-secao {
+      margin: 12px 0 15px;
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+    }
+
+    .titulo-secao h3 {
+      font-size: 22px;
+    }
+
+    .titulo-secao span {
+      font-size: 12px;
+      color: #777;
+    }
+
+    /* PRODUTOS */
+
+    .grade {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+
+    .produto {
+      background: white;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid #e0e0e0;
+      position: relative;
+    }
+
+    .imagem-produto {
+      aspect-ratio: 1 / 1;
+      background: #ececec;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .imagem-produto img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .sem-imagem {
+      color: #aaa;
+      font-size: 12px;
+      text-align: center;
+      padding: 20px;
+    }
+
+    .favorito {
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      border: none;
+      background: rgba(255,255,255,.92);
+      font-size: 18px;
+    }
+
+    .produto-info {
+      padding: 12px;
+    }
+
+    .codigo {
+      color: #888;
+      font-size: 10px;
+      font-weight: bold;
+      letter-spacing: 1px;
+    }
+
+    .produto h4 {
+      margin: 5px 0 8px;
+      font-size: 15px;
+    }
+
+    .preco-label {
+      color: #888;
+      font-size: 9px;
+      text-transform: uppercase;
+    }
+
+    .preco {
+      font-weight: bold;
+      margin-top: 2px;
+    }
+
+    .btn-ver {
+      width: 100%;
+      margin-top: 10px;
+      border: none;
+      background: black;
+      color: white;
+      border-radius: 7px;
+      padding: 10px;
+      font-size: 12px;
+      font-weight: bold;
+    }
+
+    /* MODAL */
+
+    .modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 100;
+      background: rgba(0,0,0,.7);
+      align-items: flex-end;
+    }
+
+    .modal.ativo {
+      display: flex;
+    }
+
+    .modal-conteudo {
+      background: white;
+      width: 100%;
+      max-height: 92vh;
+      overflow-y: auto;
+      border-radius: 20px 20px 0 0;
+      padding: 20px;
+    }
+
+    .fechar {
+      float: right;
+      width: 38px;
+      height: 38px;
+      border: none;
+      border-radius: 50%;
+      background: #eee;
+      font-size: 18px;
+    }
+
+    .modal h2 {
+      margin: 12px 0 4px;
+    }
+
+    .modal-codigo {
+      color: #888;
+      font-size: 12px;
+      margin-bottom: 20px;
+    }
+
+    .campo {
+      margin-bottom: 14px;
+    }
+
+    .campo label {
+      display: block;
+      font-size: 12px;
+      font-weight: bold;
+      margin-bottom: 6px;
+    }
+
+    .campo select,
+    .campo input {
+      width: 100%;
+      padding: 13px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      background: white;
+    }
+
+    .btn-principal {
+      width: 100%;
+      padding: 15px;
+      border: none;
+      background: black;
+      color: white;
+      border-radius: 8px;
+      font-weight: bold;
+      margin-top: 6px;
+    }
+
+    /* CARRINHO */
+
+    .carrinho {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: #f7f7f7;
+      z-index: 200;
+      overflow-y: auto;
+    }
+
+    .carrinho.ativo {
+      display: block;
+    }
+
+    .carrinho-topo {
+      background: black;
+      color: white;
+      padding: 18px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .carrinho-corpo {
+      padding: 15px;
+      max-width: 700px;
+      margin: auto;
+    }
+
+    .item-carrinho {
+      background: white;
+      border: 1px solid #ddd;
+      padding: 14px;
+      border-radius: 10px;
+      margin-bottom: 10px;
+    }
+
+    .item-carrinho h4 {
+      margin-bottom: 5px;
+    }
+
+    .item-carrinho p {
+      color: #666;
+      font-size: 12px;
+      line-height: 1.6;
+    }
+
+    .item-carrinho .subtotal {
+      margin-top: 8px;
+      font-weight: bold;
+      color: black;
+    }
+
+    .remover {
+      margin-top: 8px;
+      border: none;
+      background: none;
+      color: #a00;
+      font-size: 12px;
+    }
+
+    .total {
+      background: white;
+      border-radius: 10px;
+      padding: 16px;
+      margin-top: 15px;
+      display: flex;
+      justify-content: space-between;
+      font-size: 18px;
+      font-weight: bold;
+    }
+
+    .whatsapp {
+      width: 100%;
+      border: none;
+      background: #111;
+      color: white;
+      padding: 16px;
+      border-radius: 9px;
+      font-weight: bold;
+      margin-top: 12px;
+    }
+
+    /* ADMIN */
+
+    .admin {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: #f4f4f4;
+      z-index: 300;
+      overflow-y: auto;
+    }
+
+    .admin.ativo {
+      display: block;
+    }
+
+    .admin-topo {
+      padding: 18px;
+      background: black;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .admin-corpo {
+      max-width: 700px;
+      margin: auto;
+      padding: 18px;
+    }
+
+    .admin-card {
+      background: white;
+      padding: 16px;
+      border-radius: 12px;
+      border: 1px solid #ddd;
+    }
+
+    .admin-card input,
+    .admin-card select {
+      width: 100%;
+      padding: 12px;
+      margin-top: 5px;
+      margin-bottom: 12px;
+      border: 1px solid #ccc;
+      border-radius: 7px;
+    }
+
+    .rodape {
+      text-align: center;
+      color: #999;
+      font-size: 11px;
+      padding: 35px 10px;
+    }
+
+    @media(min-width: 700px) {
+      .grade {
+        grid-template-columns: repeat(4, 1fr);
+      }
+
+      .modal {
+        align-items: center;
+        justify-content: center;
+      }
+
+      .modal-conteudo {
+        max-width: 500px;
+        border-radius: 18px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="topo">
+    <div class="marca" onclick="abrirAdmin()">
+      <h1>LUIZ HENRIQUE</h1>
+      <span>UNIFORMES</span>
+    </div>
+
+    <div class="acoes-topo">
+      <button class="icone" onclick="mostrarFavoritos()">♡</button>
+
+      <button class="icone" onclick="abrirCarrinho()">
+        🛒
+        <span class="contador" id="contadorCarrinho">0</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-conteudo">
+    <small>Catálogo de estampas</small>
+
+    <h2>Escolha a estampa. Monte sua camisa.</h2>
+
+    <p>
+      Escolha seu estilo, modelo, cor e tamanho.
+      Monte seu pedido de forma rápida.
+    </p>
+
+    <button class="btn-branco"
+      onclick="document.getElementById('catalogo').scrollIntoView({behavior:'smooth'})">
+      Ver estampas
+    </button>
+  </div>
+</section>
+
+<main id="catalogo">
+
+  <div class="busca">
+    🔎
+    <input
+      id="pesquisa"
+      placeholder="Buscar estampa ou código..."
+      oninput="renderizar()"
+    >
+  </div>
+
+  <div class="categorias" id="categorias"></div>
+
+  <div class="titulo-secao">
+    <h3>Estampas</h3>
+    <span id="quantidadeProdutos"></span>
+  </div>
+
+  <div class="grade" id="grade"></div>
+
+</main>
+
+<div class="rodape">
+  © 2026 Luiz Henrique Uniformes
+</div>
+
+<!-- MODAL PRODUTO -->
+
+<div class="modal" id="modal">
+
+  <div class="modal-conteudo">
+
+    <button class="fechar" onclick="fecharModal()">×</button>
+
+    <h2 id="modalNome"></h2>
+
+    <div class="modal-codigo" id="modalCodigo"></div>
+
+    <div class="campo">
+      <label>Modelo da camisa</label>
+
+      <select id="modelo">
+        <option>Camisa Raglan Sport</option>
+        <option>Camisa Tradicional</option>
+        <option>Manga Longa</option>
+      </select>
+    </div>
+
+    <div class="campo">
+      <label>Cor</label>
+
+      <select id="cor">
+        <option>Preta</option>
+        <option>Branca</option>
+        <option>Azul</option>
+        <option>Vermelha</option>
+      </select>
+    </div>
+
+    <div class="campo">
+      <label>Tamanho</label>
+
+      <select id="tamanho">
+        <option>PP</option>
+        <option>P</option>
+        <option selected>M</option>
+        <option>G</option>
+        <option>GG</option>
+        <option>GGG</option>
+      </select>
+    </div>
+
+    <div class="campo">
+      <label>Quantidade</label>
+
+      <input
+        type="number"
+        id="quantidade"
+        value="1"
+        min="1"
+      >
+    </div>
+
+    <button
+      class="btn-principal"
+      onclick="adicionarCarrinho()">
+      Adicionar ao pedido
+    </button>
+
+  </div>
+</div>
+
+<!-- CARRINHO -->
+
+<div class="carrinho" id="carrinho">
+
+  <div class="carrinho-topo">
+    <strong>Meu pedido</strong>
+
+    <button
+      class="icone"
+      onclick="fecharCarrinho()">
+      ×
+    </button>
+  </div>
+
+  <div class="carrinho-corpo">
+
+    <div id="itensCarrinho"></div>
+
+    <div class="total">
+      <span>Total estimado</span>
+      <span id="totalCarrinho">R$ 0,00</span>
+    </div>
+
+    <button
+      class="whatsapp"
+      onclick="finalizarWhatsApp()">
+      Finalizar pedido pelo WhatsApp
+    </button>
+
+  </div>
+</div>
+
+<!-- ADMIN -->
+
+<div class="admin" id="admin">
+
+  <div class="admin-topo">
+    <strong>Administração</strong>
+
+    <button
+      class="icone"
+      onclick="fecharAdmin()">
+      ×
+    </button>
+  </div>
+
+  <div class="admin-corpo">
+
+    <div class="admin-card">
+
+      <h3>Nova estampa</h3>
+
+      <label>Código</label>
+      <input id="adminCodigo" placeholder="Ex: FTV-013">
+
+      <label>Nome</label>
+      <input id="adminNome" placeholder="Nome da estampa">
+
+      <label>Categoria</label>
+      <input id="adminCategoria" placeholder="Ex: Futevôlei">
+
+      <label>Preço</label>
+      <input
+        id="adminPreco"
+        type="number"
+        step="0.01"
+        value="49.90"
+      >
+
+      <label>URL da imagem</label>
+      <input
+        id="adminImagem"
+        placeholder="https://..."
+      >
+
+      <button
+        class="btn-principal"
+        onclick="salvarProduto()">
+        Salvar estampa
+      </button>
+
+    </div>
+
+  </div>
+</div>
+
+<script>
+
+const WHATSAPP = "5532991977088";
+
+let produtos = JSON.parse(localStorage.getItem("lh_produtos")) || [
+
+  {
+    codigo:"FTV-001",
+    nome:"Sunset Court",
+    categoria:"Futevôlei",
+    preco:49.90,
+    imagem:""
+  },
+
+  {
+    codigo:"ACA-001",
+    nome:"Iron Focus",
+    categoria:"Academia",
+    preco:49.90,
+    imagem:""
+  },
+
+  {
+    codigo:"JJS-001",
+    nome:"Arte Suave",
+    categoria:"Jiu-Jitsu",
+    preco:49.90,
+    imagem:""
+  },
+
+  {
+    codigo:"FUT-001",
+    nome:"Brasil 10",
+    categoria:"Futebol",
+    preco:49.90,
+    imagem:""
+  },
+
+  {
+    codigo:"ESP-001",
+    nome:"Move Beyond",
+    categoria:"Esporte",
+    preco:49.90,
+    imagem:""
+  },
+
+  {
+    codigo:"CAR-001",
+    nome:"Street Machine",
+    categoria:"Carros",
+    preco:49.90,
+    imagem:""
+  },
+
+  {
+    codigo:"MOT-001",
+    nome:"Ride Free",
+    categoria:"Motos",
+    preco:49.90,
+    imagem:""
+  },
+
+  {
+    codigo:"PRO-001",
+    nome:"Equipe Pro",
+    categoria:"Profissional",
+    preco:49.90,
+    imagem:""
+  },
+
+  {
+    codigo:"FRA-001",
+    nome:"Sem Limites",
+    categoria:"Frases",
+    preco:49.90,
+    imagem:""
+  },
+
+  {
+    codigo:"REL-001",
+    nome:"Fé que Move",
+    categoria:"Religiosa",
+    preco:49.90,
+    imagem:""
+  },
+
+  {
+    codigo:"INF-001",
+    nome:"Mini Champion",
+    categoria:"Infantil",
+    preco:49.90,
+    imagem:""
+  },
+
+  {
+    codigo:"EMP-001",
+    nome:"Time Forte",
+    categoria:"Empresas",
+    preco:49.90,
+    imagem:""
+  }
+
+];
+
+let categoriaAtual = "Todos";
+
+let produtoSelecionado = null;
+
+let carrinho =
+  JSON.parse(localStorage.getItem("lh_carrinho")) || [];
+
+let favoritos =
+  JSON.parse(localStorage.getItem("lh_favoritos")) || [];
+
+let somenteFavoritos = false;
+
+
+function dinheiro(valor){
+
+  return valor.toLocaleString(
+    "pt-BR",
+    {
+      style:"currency",
+      currency:"BRL"
+    }
+  );
+
+}
+
+
+function salvarLocal(){
+
+  localStorage.setItem(
+    "lh_produtos",
+    JSON.stringify(produtos)
+  );
+
+  localStorage.setItem(
+    "lh_carrinho",
+    JSON.stringify(carrinho)
+  );
+
+  localStorage.setItem(
+    "lh_favoritos",
+    JSON.stringify(favoritos)
+  );
+
+}
+
+
+function renderCategorias(){
+
+  const categorias = [
+    "Todos",
+    ...new Set(produtos.map(p => p.categoria))
+  ];
+
+  document.getElementById("categorias").innerHTML =
+    categorias.map(cat => `
+
+      <button
+        class="categoria ${categoriaAtual === cat ? "ativa" : ""}"
+        onclick="selecionarCategoria('${cat.replace(/'/g,"\\'")}')">
+
+        ${cat}
+
+      </button>
+
+    `).join("");
+
+}
+
+
+function selecionarCategoria(cat){
+
+  categoriaAtual = cat;
+  somenteFavoritos = false;
+
+  renderizar();
+
+}
+
+
+function renderizar(){
+
+  renderCategorias();
+
+  const busca =
+    document.getElementById("pesquisa")
+    .value
+    .toLowerCase()
+    .trim();
+
+  let lista = produtos.filter(p => {
+
+    const categoriaOK =
+      categoriaAtual === "Todos" ||
+      p.categoria === categoriaAtual;
+
+    const buscaOK =
+      p.nome.toLowerCase().includes(busca) ||
+      p.codigo.toLowerCase().includes(busca) ||
+      p.categoria.toLowerCase().includes(busca);
+
+    const favoritoOK =
+      !somenteFavoritos ||
+      favoritos.includes(p.codigo);
+
+    return categoriaOK && buscaOK && favoritoOK;
+
+  });
+
+  document.getElementById("quantidadeProdutos")
+    .textContent =
+    lista.length + " estampas";
+
+  const grade =
+    document.getElementById("grade");
+
+  if(!lista.length){
+
+    grade.innerHTML = `
+      <div style="
+        grid-column:1/-1;
+        text-align:center;
+        padding:50px 10px;
+        color:#888">
+        Nenhuma estampa encontrada.
+      </div>
+    `;
+
+    return;
+
+  }
+
+  grade.innerHTML =
+    lista.map(p => {
+
+      const favorito =
+        favoritos.includes(p.codigo);
+
+      return `
+
+        <article class="produto">
+
+          <button
+            class="favorito"
+            onclick="alternarFavorito('${p.codigo}')">
+
+            ${favorito ? "♥" : "♡"}
+
+          </button>
+
+          <div class="imagem-produto">
+
+            ${
+              p.imagem
+              ?
+              `<img
+                src="${p.imagem}"
+                alt="${p.nome}"
+                loading="lazy"
+              >`
+              :
+              `<div class="sem-imagem">
+                LUIZ HENRIQUE<br>
+                UNIFORMES
+              </div>`
+            }
+
+          </div>
+
+          <div class="produto-info">
+
+            <div class="codigo">
+              ${p.codigo}
+            </div>
+
+            <h4>${p.nome}</h4>
+
+            <div class="preco-label">
+              A partir de
+            </div>
+
+            <div class="preco">
+              ${dinheiro(p.preco)}
+            </div>
+
+            <button
+              class="btn-ver"
+              onclick="abrirProduto('${p.codigo}')">
+
+              ESCOLHER
+
+            </button>
+
+          </div>
+
+        </article>
+
+      `;
+
+    }).join("");
+
+}
+
+
+function alternarFavorito(codigo){
+
+  const indice =
+    favoritos.indexOf(codigo);
+
+  if(indice >= 0){
+
+    favoritos.splice(indice,1);
+
+  }else{
+
+    favoritos.push(codigo);
+
+  }
+
+  salvarLocal();
+  renderizar();
+
+}
+
+
+function mostrarFavoritos(){
+
+  somenteFavoritos =
+    !somenteFavoritos;
+
+  categoriaAtual = "Todos";
+
+  renderizar();
+
+  document
+    .getElementById("catalogo")
+    .scrollIntoView({
+      behavior:"smooth"
+    });
+
+}
+
+
+function abrirProduto(codigo){
+
+  produtoSelecionado =
+    produtos.find(p => p.codigo === codigo);
+
+  if(!produtoSelecionado) return;
+
+  document.getElementById("modalNome")
+    .textContent =
+    produtoSelecionado.nome;
+
+  document.getElementById("modalCodigo")
+    .textContent =
+    produtoSelecionado.codigo +
+    " • " +
+    produtoSelecionado.categoria;
+
+  document.getElementById("quantidade")
+    .value = 1;
+
+  document.getElementById("modal")
+    .classList.add("ativo");
+
+}
+
+
+function fecharModal(){
+
+  document.getElementById("modal")
+    .classList.remove("ativo");
+
+}
+
+
+function adicionarCarrinho(){
+
+  if(!produtoSelecionado) return;
+
+  const quantidade =
+    Math.max(
+      1,
+      parseInt(
+        document.getElementById("quantidade").value
+      ) || 1
+    );
+
+  carrinho.push({
+
+    codigo:
+      produtoSelecionado.codigo,
+
+    nome:
+      produtoSelecionado.nome,
+
+    preco:
+      produtoSelecionado.preco,
+
+    modelo:
+      document.getElementById("modelo").value,
+
+    cor:
+      document.getElementById("cor").value,
+
+    tamanho:
+      document.getElementById("tamanho").value,
+
+    quantidade:
+      quantidade
+
+  });
+
+  salvarLocal();
+
+  atualizarContador();
+
+  fecharModal();
+
+  abrirCarrinho();
+
+}
+
+
+function atualizarContador(){
+
+  const total =
+    carrinho.reduce(
+      (soma,item) =>
+        soma + item.quantidade,
+      0
+    );
+
+  document.getElementById("contadorCarrinho")
+    .textContent = total;
+
+}
+
+
+function abrirCarrinho(){
+
+  renderCarrinho();
+
+  document.getElementById("carrinho")
+    .classList.add("ativo");
+
+}
+
+
+function fecharCarrinho(){
+
+  document.getElementById("carrinho")
+    .classList.remove("ativo");
+
+}
+
+
+function removerCarrinho(indice){
+
+  carrinho.splice(indice,1);
+
+  salvarLocal();
+
+  atualizarContador();
+
+  renderCarrinho();
+
+}
+
+
+function renderCarrinho(){
+
+  const area =
+    document.getElementById("itensCarrinho");
+
+  if(!carrinho.length){
+
+    area.innerHTML = `
+      <div style="
+        text-align:center;
+        padding:50px 15px;
+        color:#888">
+        Seu pedido está vazio.
+      </div>
+    `;
+
+  }else{
+
+    area.innerHTML =
+      carrinho.map((item,i) => {
+
+        const subtotal =
+          item.preco *
+          item.quantidade;
+
+        return `
+
+          <div class="item-carrinho">
+
+            <h4>
+              ${item.nome}
+            </h4>
+
+            <p>
+              Código: ${item.codigo}<br>
+              Modelo: ${item.modelo}<br>
+              Cor: ${item.cor}<br>
+              Tamanho: ${item.tamanho}<br>
+              Quantidade: ${item.quantidade}
+            </p>
+
+            <div class="subtotal">
+              ${dinheiro(subtotal)}
+            </div>
+
+            <button
+              class="remover"
+              onclick="removerCarrinho(${i})">
+
+              Remover
+
+            </button>
+
+          </div>
+
+        `;
+
+      }).join("");
+
+  }
+
+  const total =
+    carrinho.reduce(
+      (soma,item) =>
+        soma +
+        item.preco *
+        item.quantidade,
+      0
+    );
+
+  document.getElementById("totalCarrinho")
+    .textContent =
+    dinheiro(total);
+
+}
+
+
+function finalizarWhatsApp(){
+
+  if(!carrinho.length){
+
+    alert("Adicione uma estampa ao pedido.");
+
+    return;
+
+  }
+
+  let mensagem =
+`Olá! Quero fazer um orçamento na Luiz Henrique Uniformes.
+
+MEU PEDIDO:
+
+`;
+
+  carrinho.forEach((item,i) => {
+
+    const subtotal =
+      item.preco *
+      item.quantidade;
+
+    mensagem +=
+`${i+1}. ${item.nome}
+Código: ${item.codigo}
+Modelo: ${item.modelo}
+Cor: ${item.cor}
+Tamanho: ${item.tamanho}
+Quantidade: ${item.quantidade}
+Subtotal estimado: ${dinheiro(subtotal)}
+
+`;
+
+  });
+
+  const total =
+    carrinho.reduce(
+      (soma,item) =>
+        soma +
+        item.preco *
+        item.quantidade,
+      0
+    );
+
+  mensagem +=
+`Total estimado: ${dinheiro(total)}
+
+Gostaria de confirmar valores e prazo.`;
+
+  const url =
+    "https://wa.me/" +
+    WHATSAPP +
+    "?text=" +
+    encodeURIComponent(mensagem);
+
+  window.open(
+    url,
+    "_blank"
+  );
+
+}
+
+
+/* ADMIN */
+
+function abrirAdmin(){
+
+  const pin =
+    prompt("Digite o PIN de administração:");
+
+  if(pin !== "1234"){
+
+    if(pin !== null){
+      alert("PIN incorreto.");
+    }
+
+    return;
+
+  }
+
+  document.getElementById("admin")
+    .classList.add("ativo");
+
+}
+
+
+function fecharAdmin(){
+
+  document.getElementById("admin")
+    .classList.remove("ativo");
+
+}
+
+
+function salvarProduto(){
+
+  const codigo =
+    document.getElementById("adminCodigo")
+    .value
+    .trim();
+
+  const nome =
+    document.getElementById("adminNome")
+    .value
+    .trim();
+
+  const categoria =
+    document.getElementById("adminCategoria")
+    .value
+    .trim();
+
+  const preco =
+    parseFloat(
+      document.getElementById("adminPreco").value
+    );
+
+  const imagem =
+    document.getElementById("adminImagem")
+    .value
+    .trim();
+
+  if(
+    !codigo ||
+    !nome ||
+    !categoria ||
+    !preco
+  ){
+
+    alert(
+      "Preencha código, nome, categoria e preço."
+    );
+
+    return;
+
+  }
+
+  const existente =
+    produtos.findIndex(
+      p => p.codigo === codigo
+    );
+
+  const produto = {
+    codigo,
+    nome,
+    categoria,
+    preco,
+    imagem
+  };
+
+  if(existente >= 0){
+
+    produtos[existente] =
+      produto;
+
+  }else{
+
+    produtos.unshift(
+      produto
+    );
+
+  }
+
+  salvarLocal();
+
+  document.getElementById("adminCodigo").value = "";
+  document.getElementById("adminNome").value = "";
+  document.getElementById("adminCategoria").value = "";
+  document.getElementById("adminImagem").value = "";
+
+  renderizar();
+
+  alert("Estampa salva.");
+
+}
+
+
+renderizar();
+atualizarContador();
+
+</script>
+
+</body>
+</html>
