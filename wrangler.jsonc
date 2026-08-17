@@ -1,0 +1,19 @@
+{
+  "name": "luiz-henrique-uniformes",
+  "main": "src/index.js",
+  "compatibility_date": "2026-08-17",
+
+  "assets": {
+    "directory": ".",
+    "binding": "ASSETS",
+    "run_worker_first": ["/api/*"]
+  },
+
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "lh-catalogo",
+      "database_id": "eeb6f72d-20e0-47d8-a218-6b7750ffb750"
+    }
+  ]
+}
